@@ -40,7 +40,7 @@
                 android:layout_marginLeft="0dip"
                 android:layout_weight="1"
                 android:id="@+id/country_code_et"
-                android:inputType="number" />
+                android:inputType="phone"  />
         </TableRow>
 
         <TableRow
@@ -60,7 +60,7 @@
                 android:layout_marginLeft="0dip"
                 android:layout_weight="1"
                 android:id="@+id/phone_et"
-                android:inputType="number" />
+                android:inputType="phone" />
         </TableRow>
     </TableLayout>
 

@@ -13,8 +13,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="top|center_horizontal"
         android:layout_marginBottom="20dip"
-        android:text="Automatic Call Blocker"
-        android:textSize="25sp" />
+        android:text="@string/app_name"
+        android:id="@+id/maintitle"
+        android:textSize="16sp" />
 
     <TableLayout
         android:layout_width="fill_parent"

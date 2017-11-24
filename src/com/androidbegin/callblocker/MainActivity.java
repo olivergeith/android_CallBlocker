@@ -38,12 +38,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 	// This holds the value of the row number, which user has selected for further action
 	private int selectedRecordPosition = -1;
+	private TextView mTitle;
 
 	@Override
 	protected void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
 		// Initialization of the button of the Main screen
 		add_blacklist_btn = (Button) findViewById(R.id.add_blacklist_btn);
 
@@ -60,6 +60,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 		// Attach OnItemLongClickListener to track user action and perform accordingly
 		listview.setOnItemLongClickListener(this);
+
+		// title
+		mTitle = (TextView) findViewById(R.id.maintitle);
+		mTitle.setText("Blocked calls so far: " + blockCount);
+
+		// showing notification
 		showNotification();
 	}
 
@@ -111,6 +117,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		// Now, link the CustomArrayAdapter with the ListView
 		listview.setAdapter(new CustomArrayAdapter(this, R.layout.list_item, blockList));
 
+		mTitle.setText("Blocked calls so far: " + blockCount);
+
 		// If, no record found in the database, appropriate message needs to be displayed.
 		populateNoRecordMsg();
 	}
@@ -120,7 +128,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		final NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
 		builder.setContentTitle("Call Blocker");
 		builder.setSmallIcon(R.drawable.ic_notification);
-		builder.setContentText("I'm active and have blocked: " + blockCount);
+		builder.setContentText("I'm active and blocking! (" + blockCount + ")");
 		builder.setOngoing(true);
 		final Intent resultIntent = new Intent(this, MainActivity.class);
 		// Because clicking the notification opens a new ("special") activity, there's
